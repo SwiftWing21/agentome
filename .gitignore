@@ -1,0 +1,8 @@
+__pycache__/
+*.pyc
+dist/
+*.egg-info/
+build/
+genome.db
+genome.db-wal
+genome.db-shm
