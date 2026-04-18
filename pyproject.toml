@@ -4,15 +4,15 @@ build-backend = "hatchling.build"
 
 [project]
 name = "agentome"
-version = "0.3.0b5"
-description = "Genome-based context compression for AI agents — thin wrapper around Helix Context"
+version = "0.4.0b1"
+description = "Agentome — coordinate index layer for agent context, powered by Helix Context"
 readme = "README.md"
 requires-python = ">=3.11"
 license = "Apache-2.0"
 authors = [
     { name = "Michael Bachaud", email = "swiftwing21@users.noreply.github.com" },
 ]
-keywords = ["agentome", "llm", "context", "compression", "genome", "helix", "rag", "ribosome"]
+keywords = ["agentome", "llm", "context", "compression", "genome", "helix", "rag", "ribosome", "mcp", "agent"]
 classifiers = [
     "Development Status :: 4 - Beta",
     "Intended Audience :: Developers",
@@ -22,8 +22,13 @@ classifiers = [
     "Programming Language :: Python :: 3.12",
     "Programming Language :: Python :: 3.13",
 ]
+# Agentome is a thin identity wrapper around helix-context. All runtime
+# behavior is delegated — pinning keeps the two versions aligned so
+# consumers don't get surprised by API drift between the shim and the
+# engine. See helix-context[codec] for the Headroom compression path
+# (recommended), which Agentome activates transparently when installed.
 dependencies = [
-    "helix-context>=0.3.0b5",
+    "helix-context>=0.4.0b1",
 ]
 
 [project.urls]
@@ -31,6 +36,30 @@ Homepage = "https://github.com/SwiftWing21/agentome"
 Repository = "https://github.com/SwiftWing21/agentome"
 Paper = "https://mbachaud.substack.com/p/agentome"
 "Helix Context" = "https://github.com/SwiftWing21/helix-context"
+
+[project.optional-dependencies]
+# Each extra delegates to the matching helix-context extra so
+# `pip install agentome[launcher]` == `pip install helix-context[launcher]`.
+# Mirrored one-to-one; see helix-context pyproject for the per-extra
+# purpose and license notes (notably pystray LGPL-3 under launcher-tray).
+accel = ["helix-context[accel]>=0.4.0b1"]
+embeddings = ["helix-context[embeddings]>=0.4.0b1"]
+cpu = ["helix-context[cpu]>=0.4.0b1"]
+mcp = ["helix-context[mcp]>=0.4.0b1"]
+nli = ["helix-context[nli]>=0.4.0b1"]
+otel = ["helix-context[otel]>=0.4.0b1"]
+launcher = ["helix-context[launcher]>=0.4.0b1"]
+launcher-native = ["helix-context[launcher-native]>=0.4.0b1"]
+launcher-tray = ["helix-context[launcher-tray]>=0.4.0b1"]
+ast = ["helix-context[ast]>=0.4.0b1"]
+scorerift = ["helix-context[scorerift]>=0.4.0b1"]
+# Headroom is the recommended compression path for gene content. It's
+# optional (agentome runs without it) but strongly preferred when you
+# want semantic compression in the expression pipeline instead of raw
+# character truncation. Apache-2.0, Tejas Chopra. See NOTICE on helix-context.
+codec = ["helix-context[codec]>=0.4.0b1"]
+dev = ["helix-context[dev]>=0.4.0b1"]
+all = ["helix-context[all]>=0.4.0b1"]
 
 [project.scripts]
 agentome = "helix_context.server:main"

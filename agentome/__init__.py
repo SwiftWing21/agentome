@@ -1,8 +1,7 @@
 """
-Agentome — Genome-based context compression for AI agents.
+Agentome — Coordinate index layer for agent context, powered by Helix Context.
 
-This is the reference implementation, powered by Helix Context.
-Agentome is the concept; Helix Context is the engine.
+Agentome is the concept / framework; Helix Context is the engine.
 
     pip install agentome
 
@@ -10,7 +9,9 @@ is equivalent to:
 
     pip install helix-context
 
-All public APIs are re-exported from helix_context.
+All public APIs are re-exported from helix_context, including the
+packet-mode schemas introduced in 0.4.0b1 (agent-safe context
+labeling per the agent-context-index build spec).
 """
 
 from helix_context import (
@@ -43,6 +44,15 @@ from helix_context import (
     GenomeFullError,
 )
 
+# Packet-mode schemas (shipped in helix-context 0.4.0b1 — see the
+# agent-context-index build spec). Re-exported at top-level so
+# consumers can `from agentome import ContextPacket`.
+from helix_context.schemas import (
+    ContextItem,
+    ContextPacket,
+    RefreshTarget,
+)
+
 # Aliases for the Agentome vocabulary
 AgentomeConfig = HelixConfig
 AgentomeManager = HelixContextManager
@@ -72,6 +82,10 @@ __all__ = [
     "FoldingError",
     "TranscriptionError",
     "GenomeFullError",
+    # Packet-mode schemas
+    "ContextItem",
+    "ContextPacket",
+    "RefreshTarget",
     # Agentome aliases
     "AgentomeConfig",
     "AgentomeManager",
