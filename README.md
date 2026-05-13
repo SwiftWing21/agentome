@@ -8,7 +8,7 @@ trust versus what to reread — instead of stuffing raw text into
 context windows.
 
 This package is a thin identity wrapper around
-[Helix Context](https://github.com/SwiftWing21/helix-context), the
+[Helix Context](https://github.com/mbachaud/helix-context), the
 reference implementation. `pip install agentome` pulls
 `helix-context` and re-exports the full public API.
 
@@ -102,7 +102,7 @@ Core `pip install agentome` installs:
 
 | Package | Version | Source | Why |
 |---|---|---|---|
-| **helix-context** | `>=0.4.0b1` | [SwiftWing21/helix-context](https://github.com/SwiftWing21/helix-context) | The engine |
+| **helix-context** | `>=0.4.0b1` | [mbachaud/helix-context](https://github.com/mbachaud/helix-context) | The engine |
 | fastapi | `>=0.110` | via helix-context | HTTP server |
 | uvicorn | `>=0.29` | via helix-context | ASGI runtime |
 | httpx | `>=0.27` | via helix-context | HTTP client (proxy + probes) |
@@ -130,7 +130,7 @@ dep resolution.
 | `launcher-tray` | jinja2, psutil, pystray (**LGPL-3**), Pillow | Launcher with system tray icon |
 | `ast` | tree-sitter + 4 language grammars | AST-aware code chunking |
 | `scorerift` | scorerift | Divergence monitoring bridge |
-| `codec` | **headroom-ai**[proxy,code]>=0.5.21 | **Recommended** — CPU-resident semantic compression (Headroom by Tejas Chopra, Apache-2.0). Replaces character-level truncation in the expression pipeline. See [NOTICE](https://github.com/SwiftWing21/helix-context/blob/main/NOTICE). |
+| `codec` | **headroom-ai**[proxy,code]>=0.5.21 | **Recommended** — CPU-resident semantic compression (Headroom by Tejas Chopra, Apache-2.0). Replaces character-level truncation in the expression pipeline. See [NOTICE](https://github.com/mbachaud/helix-context/blob/main/NOTICE). |
 | `dev` | pytest, pytest-asyncio | Contributor test suite |
 | `all` | Every extra except `dev`, `launcher-tray`, `launcher-native` | The full feature surface |
 
@@ -188,7 +188,7 @@ char truncation when not.*
 
 ## Full Documentation
 
-See the [Helix Context README](https://github.com/SwiftWing21/helix-context)
+See the [Helix Context README](https://github.com/mbachaud/helix-context)
 for complete documentation including:
 
 - Two product surfaces (`/context` decoder path + `/context/packet`

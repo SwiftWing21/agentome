@@ -10,7 +10,7 @@ readme = "README.md"
 requires-python = ">=3.11"
 license = "Apache-2.0"
 authors = [
-    { name = "Michael Bachaud", email = "swiftwing21@users.noreply.github.com" },
+    { name = "Michael Bachaud", email = "mbachaud@users.noreply.github.com" },
 ]
 keywords = ["agentome", "llm", "context", "compression", "genome", "helix", "rag", "ribosome", "mcp", "agent"]
 classifiers = [
@@ -32,10 +32,10 @@ dependencies = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/SwiftWing21/agentome"
-Repository = "https://github.com/SwiftWing21/agentome"
+Homepage = "https://github.com/mbachaud/agentome"
+Repository = "https://github.com/mbachaud/agentome"
 Paper = "https://mbachaud.substack.com/p/agentome"
-"Helix Context" = "https://github.com/SwiftWing21/helix-context"
+"Helix Context" = "https://github.com/mbachaud/helix-context"
 
 [project.optional-dependencies]
 # Each extra delegates to the matching helix-context extra so
